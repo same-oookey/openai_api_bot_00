@@ -30,17 +30,17 @@ def communicate():
 
 
 # ユーザーインターフェイスの構築
-st.title("プロンプトエンジニア")
-st.write("テスト用サイトです")
-
-user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
 
 if st.session_state["messages"]:
     messages = st.session_state["messages"]
 
-    for message in reversed(messages[1:]):  # 直近のメッセージを上に
+    for message in messages[1:]:  # 直近のメッセージを下に
         speaker = "🙂"
         if message["role"]=="assistant":
             speaker="🤖"
 
         st.write(speaker + ": " + message["content"])
+
+user_input = st.text_input("メッセージを入力してください。", key="user_input", on_change=communicate)
+st.title("プロンプトエンジニア")
+st.write("テスト用サイトです")
